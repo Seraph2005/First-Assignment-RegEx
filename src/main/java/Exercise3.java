@@ -11,7 +11,7 @@ public class Exercise3 {
     */
 
     public static String extractURL(String text) {
-        String regex = "write your regex pattern here!";  // TODO
+        String regex = "(https:\\/\\/www\\.|http:\\/\\/www\\.|https:\\/\\/|http:\\/\\/)(.{2,}\\.)+([\\w]{2,})";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
@@ -29,8 +29,17 @@ public class Exercise3 {
      */
 
     public static boolean validateEmail(String email) {
-        // TODO
-        return false;
+        String regex = ".{2,}@.{2,}\\..{3,}";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+
+        if (matcher.find()) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /*
@@ -38,9 +47,16 @@ public class Exercise3 {
     */
 
     public static List<String> findWordsWithRepeatLetters(String input) {
+        String regex = "\\b(\\w*(\\w)\\w*\\2\\w*)";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
         List<String> wordsWithRepeatLetters = new ArrayList<>();
+
+        while(matcher.find()){
+                wordsWithRepeatLetters.add(matcher.group());
+        }
         return wordsWithRepeatLetters;
-        // TODO
     }
 
     /*
@@ -50,12 +66,20 @@ public class Exercise3 {
     */
 
     public static List<String> findReapetdWords(String input) {
-        List<String> repeatedWords = new ArrayList<>();
-        return repeatedWords;
-        // TODO
+        String regex = "\\b(\\w{2,})\\1";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        List<String> wordsWithRepeatLetters = new ArrayList<>();
+
+        while(matcher.find()){
+            wordsWithRepeatLetters.add(matcher.group());
+        }
+        return wordsWithRepeatLetters;
     }
 
     public static void main(String[] args) {
         // test your code here!
+
     }
 }
