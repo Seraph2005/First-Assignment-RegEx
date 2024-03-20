@@ -11,8 +11,7 @@ public class Exercise3 {
     */
 
     public static String extractURL(String text) {
-        String regex = "";
-        // TODO
+        String regex = "(https:\\/\\/www\\.|http:\\/\\/www\\.|https:\\/\\/|http:\\/\\/)(.{2,}\\.)+([\\w]{2,})";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
